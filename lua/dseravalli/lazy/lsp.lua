@@ -2,17 +2,17 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "nvim-lua/plenary.nvim",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      'nvimtools/none-ls.nvim',
+      "nvim-lua/plenary.nvim",
       "folke/lazydev.nvim",
       "hrsh7th/nvim-cmp",
-      "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
+      "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets",
       "j-hui/fidget.nvim",
-      'nvimtools/none-ls.nvim',
     },
 
     config = function()
@@ -23,7 +23,8 @@ return {
         "force",
         {},
         vim.lsp.protocol.make_client_capabilities(),
-        cmp_lsp.default_capabilities())
+        cmp_lsp.default_capabilities()
+      )
 
       local servers = {
         groovyls = {},
@@ -35,8 +36,12 @@ return {
             disableTaggedHints = true,
           },
           python = {
+            pythonPath = vim.fn.exepath("python3"),
             analysis = {
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
               typeCheckingMode = "standard",
+              diagnosticMode = "workspace",
               diagnosticSeverityOverrides = {
                 reportUndefinedVariable = "none",
               },
