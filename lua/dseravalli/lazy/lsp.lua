@@ -84,6 +84,7 @@ return {
           },
         },
         bashls = {},
+        svelte = {},
       }
 
       local on_attach = function(_, bufnr)
