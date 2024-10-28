@@ -12,7 +12,7 @@ return {
       { "<leader>w_", hidden = true },
       { "<leader>r",  group = "[R]efactor & [R]ename" },
       { "<leader>r_", hidden = true },
-      { "<leade >t",  group = "[T]est & [T]rouble" },
+      { "<leader>t",  group = "[T]est & [T]rouble" },
       { "<leader>t_", hidden = true },
     })
   end
