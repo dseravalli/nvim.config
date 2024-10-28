@@ -14,6 +14,7 @@ return {
   config = function()
     require('telescope').setup({})
     pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'possession')
 
     vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
     vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
@@ -35,5 +36,6 @@ return {
     vim.keymap.set('n', '<leader>ps', function()
       require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
     end, { desc = '[P]roject [S]earch' })
+    vim.keymap.set('n', '<leader>ss', function() require("telescope").extensions.possession.list() end, { desc = "List sessions" })
   end,
 }
