@@ -14,6 +14,8 @@ return {
       { "<leader>r_", hidden = true },
       { "<leader>t",  group = "[T]est & [T]rouble" },
       { "<leader>t_", hidden = true },
+      { "<leader>p",  group = "[P]ossession" },
+      { "<leader>p_", hidden = true },
     })
   end
 }

@@ -33,7 +33,7 @@ return {
     vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
-    vim.keymap.set('n', '<leader>ps', function()
+    vim.keymap.set('n', '<leader>sp', function()
       require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
     end, { desc = '[P]roject [S]earch' })
     vim.keymap.set('n', '<leader>ss', function() require("telescope").extensions.possession.list() end, { desc = "List sessions" })
