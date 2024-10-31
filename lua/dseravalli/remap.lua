@@ -9,7 +9,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('v', '<leader>p', "\"_dP", { desc = "Paste without overwrite" })
 vim.keymap.set('n', 'bn', ':bn<CR>')
 vim.keymap.set('n', 'bp', ':bp<CR>')
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 vim.keymap.set('n', '<leader>c', ':BufferKill<CR>', { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>g", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Gsub word under cursor" })

@@ -16,6 +16,8 @@ return {
       { "<leader>t_", hidden = true },
       { "<leader>p",  group = "[P]ossession" },
       { "<leader>p_", hidden = true },
+      { "<leader>d",  group = "[D]ebug" },
+      { "<leader>d_", hidden = true },
     })
   end
 }
