@@ -34,8 +34,8 @@ return {
       vim.keymap.set('n', '<leader>dq', function()
         dap.disconnect({ terminateDebuggee = true })
       end, { desc = 'Debug: Quit' })
-      vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-      vim.keymap.set('n', '<leader>B', function()
+      vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+      vim.keymap.set('n', '<leader>dB', function()
         dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
       end, { desc = 'Debug: Set Breakpoint' })
 
