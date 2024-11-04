@@ -1,5 +1,9 @@
 vim.g.mapleader = " "
 
+-- Remove built-in diagnostics keymaps
+-- vim.keymap.del('n', '<C-W>d')
+-- vim.keymap.del('n', '<C-W><C-D>')
+
 vim.keymap.set('n', 'Q', '<Nop>')
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
