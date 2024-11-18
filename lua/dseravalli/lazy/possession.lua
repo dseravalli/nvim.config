@@ -4,7 +4,8 @@ return {
   config = function()
     require("possession").setup({
       autosave = {
-        current = true
+        current = true,
+        cwd = true
       }
     })
 
