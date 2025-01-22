@@ -154,6 +154,7 @@ return {
           ["<S-Tab>"] = nil,
         },
         sources = {
+          { name = "copilot" },
           { name = "nvim_lsp", group_index = 2 },
           { name = "luasnip",  group_index = 2 },
         }
