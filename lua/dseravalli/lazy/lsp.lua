@@ -95,6 +95,7 @@ return {
 				bashls = {},
 				svelte = {},
 				jsonls = {},
+				flux_lsp = {},
 			}
 
 			local on_attach = function(_, bufnr)
