@@ -95,7 +95,6 @@ return {
 				bashls = {},
 				svelte = {},
 				jsonls = {},
-				flux_lsp = {},
 			}
 
 			local on_attach = function(_, bufnr)
@@ -126,7 +125,6 @@ return {
 			end
 
 			require("fidget").setup({})
-			require("mason").setup()
 
 			mason_lspconfig.setup({
 				ensure_installed = vim.tbl_keys(servers),
