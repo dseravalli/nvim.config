@@ -16,131 +16,30 @@ return {
 		},
 
 		config = function()
+			-- Setup dependencies
+			require("fidget").setup({})
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"groovyls",
+					"rust_analyzer",
+					"gopls",
+					"ts_ls",
+					"solargraph",
+					"prismals",
+					"html",
+					"bashls",
+					"svelte",
+					"jsonls",
+					"pyright",
+					"tailwindcss",
+					"lua_ls",
+					"ruff",
+				},
+			})
+
+			-- Setup completion
 			local cmp = require("cmp")
 			local cmp_lsp = require("cmp_nvim_lsp")
-			local mason_lspconfig = require("mason-lspconfig")
-			local capabilities = vim.tbl_deep_extend(
-				"force",
-				{},
-				vim.lsp.protocol.make_client_capabilities(),
-				cmp_lsp.default_capabilities()
-			)
-
-			local servers = {
-				groovyls = {},
-				rust_analyzer = {},
-				gopls = {},
-				pyright = {
-					pyright = {
-						disableOrganizeImports = true,
-						disableTaggedHints = true,
-					},
-					python = {
-						pythonPath = vim.fn.exepath("python3"),
-						analysis = {
-							autoSearchPaths = true,
-							useLibraryCodeForTypes = true,
-							typeCheckingMode = "standard",
-							diagnosticMode = "workspace",
-							diagnosticSeverityOverrides = {
-								reportUndefinedVariable = "none",
-							},
-						},
-					},
-				},
-				ts_ls = {},
-				solargraph = {},
-				prismals = {},
-				html = { filetypes = { "html", "twig", "hbs" } },
-				tailwindcss = {
-					filetypes = {
-						"html",
-						"css",
-						"templ",
-						"astro",
-						"javascript",
-						"typescript",
-						"react",
-						"svelte",
-						"vue",
-					},
-					init_options = { userLanguages = { templ = "html" } },
-				},
-				lua_ls = {
-					Lua = {
-						runtime = {
-							version = "LuaJIT",
-						},
-						diagnostics = {
-							globals = { "vim", "Snacks" },
-						},
-						workspace = {
-							checkThirdParty = false,
-							library = vim.api.nvim_get_runtime_file("", true),
-						},
-						telemetry = {
-							enable = false,
-						},
-					},
-				},
-				ruff = {
-					init_options = {
-						settings = {
-							lint = {
-								select = { "E", "F", "B", "Q", "ARG" },
-							},
-						},
-					},
-				},
-				bashls = {},
-				svelte = {},
-				jsonls = {},
-			}
-
-			local on_attach = function(_, bufnr)
-				local nmap = function(keys, func, desc)
-					if desc then
-						desc = "LSP: " .. desc
-					end
-
-					vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-				end
-
-				nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-				nmap("<leader>vca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
-				nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-				nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-				nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-				nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-				nmap("<leader>wds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-				nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-
-				-- See `:help K` for why this keymap
-				nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-				nmap("<leader>k", vim.lsp.buf.signature_help, "Signature Documentation")
-
-				-- Lesser used LSP functionality
-				nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-			end
-
-			require("fidget").setup({})
-
-			mason_lspconfig.setup({
-				ensure_installed = vim.tbl_keys(servers),
-			})
-
-			mason_lspconfig.setup_handlers({
-				function(server_name)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-						on_attach = on_attach,
-						settings = servers[server_name],
-						filetypes = (servers[server_name] or {}).filetypes,
-						init_options = (servers[server_name] or {}).init_options,
-					})
-				end,
-			})
 
 			cmp.setup({
 				snippet = {
@@ -168,6 +67,135 @@ return {
 				},
 			})
 
+			-- LSP capabilities
+			local capabilities = vim.tbl_deep_extend(
+				"force",
+				{},
+				vim.lsp.protocol.make_client_capabilities(),
+				cmp_lsp.default_capabilities()
+			)
+
+			-- On attach function
+			local on_attach = function(_, bufnr)
+				local nmap = function(keys, func, desc)
+					if desc then
+						desc = "LSP: " .. desc
+					end
+					vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+				end
+
+				nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+				nmap("<leader>vca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+
+				nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+				nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+				nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+				nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+				nmap("<leader>wds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+				nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+
+				nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+				nmap("<leader>k", vim.lsp.buf.signature_help, "Signature Documentation")
+
+				nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+			end
+
+			-- Server configurations
+			local lspconfig = require("lspconfig")
+
+			-- Default setup for most servers
+			local default_config = {
+				on_attach = on_attach,
+				capabilities = capabilities,
+			}
+
+			-- Simple servers that use default config
+			local simple_servers = {
+				"groovyls",
+				"rust_analyzer",
+				"gopls",
+				"ts_ls",
+				"solargraph",
+				"prismals",
+				"bashls",
+				"svelte",
+				"jsonls",
+			}
+
+			for _, server in ipairs(simple_servers) do
+				lspconfig[server].setup(default_config)
+			end
+
+			-- Servers with custom configurations
+			lspconfig.html.setup(vim.tbl_deep_extend("force", default_config, {
+				filetypes = { "html", "twig", "hbs" },
+			}))
+
+			lspconfig.pyright.setup(vim.tbl_deep_extend("force", default_config, {
+				settings = {
+					pyright = {
+						disableOrganizeImports = true,
+						disableTaggedHints = true,
+					},
+					python = {
+						pythonPath = vim.fn.exepath("python3"),
+						analysis = {
+							autoSearchPaths = true,
+							useLibraryCodeForTypes = true,
+							typeCheckingMode = "standard",
+							diagnosticMode = "workspace",
+							diagnosticSeverityOverrides = {
+								reportUndefinedVariable = "none",
+							},
+						},
+					},
+				},
+			}))
+
+			lspconfig.tailwindcss.setup(vim.tbl_deep_extend("force", default_config, {
+				filetypes = {
+					"html",
+					"css",
+					"templ",
+					"astro",
+					"javascript",
+					"typescript",
+					"react",
+					"svelte",
+					"vue",
+				},
+				init_options = { userLanguages = { templ = "html" } },
+			}))
+
+			lspconfig.lua_ls.setup(vim.tbl_deep_extend("force", default_config, {
+				settings = {
+					Lua = {
+						runtime = {
+							version = "LuaJIT",
+						},
+						diagnostics = {
+							globals = { "vim", "Snacks" },
+						},
+						workspace = {
+							checkThirdParty = false,
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+						telemetry = {
+							enable = false,
+						},
+					},
+				},
+			}))
+
+			lspconfig.ruff.setup(vim.tbl_deep_extend("force", default_config, {
+				settings = {
+					lint = {
+						select = { "E", "F", "B", "Q", "ARG" },
+					},
+				},
+			}))
+
+			-- Setup null-ls
 			local null_ls = require("null-ls")
 			null_ls.setup({
 				sources = {
@@ -175,10 +203,10 @@ return {
 				},
 			})
 
+			-- Install formatters and linters via Mason
 			vim.defer_fn(function()
 				local mr = require("mason-registry")
 
-				-- List of formatters and linters to install --
 				local ensure_installed_tools = {
 					"shellcheck",
 					"shfmt",
@@ -197,8 +225,10 @@ return {
 				end)
 			end, 100)
 
+			-- Diagnostic keymaps
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 		end,
 	},
 }
+
