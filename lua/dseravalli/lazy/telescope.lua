@@ -3,6 +3,7 @@ return {
 	branch = "master",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"jedrzejboczar/possession.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
