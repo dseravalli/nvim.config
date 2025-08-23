@@ -1,10 +1,10 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"nvimtools/none-ls.nvim",
 			"nvim-lua/plenary.nvim",
 			"folke/lazydev.nvim",
 			"hrsh7th/nvim-cmp",
@@ -195,14 +195,6 @@ return {
 				},
 			}))
 
-			-- Setup null-ls
-			local null_ls = require("null-ls")
-			null_ls.setup({
-				sources = {
-					null_ls.builtins.formatting.isort,
-				},
-			})
-
 			-- Install formatters and linters via Mason
 			vim.defer_fn(function()
 				local mr = require("mason-registry")
@@ -226,9 +218,12 @@ return {
 			end, 100)
 
 			-- Diagnostic keymaps
-			vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Go to previous diagnostic message" })
-			vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Go to next diagnostic message" })
+			vim.keymap.set("n", "[d", function()
+				vim.diagnostic.jump({ count = -1 })
+			end, { desc = "Go to previous diagnostic message" })
+			vim.keymap.set("n", "]d", function()
+				vim.diagnostic.jump({ count = 1 })
+			end, { desc = "Go to next diagnostic message" })
 		end,
 	},
 }
-
