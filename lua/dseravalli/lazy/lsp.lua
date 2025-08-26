@@ -13,6 +13,7 @@ return {
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			"j-hui/fidget.nvim",
+			"zbirenbaum/copilot-cmp",
 		},
 
 		config = function()
@@ -160,7 +161,8 @@ return {
 					"astro",
 					"javascript",
 					"typescript",
-					"react",
+					"javascriptreact",
+					"typescriptreact",
 					"svelte",
 					"vue",
 				},
@@ -188,11 +190,7 @@ return {
 			}))
 
 			lspconfig.ruff.setup(vim.tbl_deep_extend("force", default_config, {
-				settings = {
-					lint = {
-						select = { "E", "F", "B", "Q", "ARG" },
-					},
-				},
+				init_options = { settings = { args = { "--select=E,F,B,Q,ARG" } } },
 			}))
 
 			-- Install formatters and linters via Mason
