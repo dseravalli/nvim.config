@@ -5,10 +5,10 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("v", "<leader>p", '"_dP', { desc = "Paste without overwrite" })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 vim.keymap.set(
-	"n",
-	"<leader>rs",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Refactor substitute word under cursor" }
+  "n",
+  "<leader>rs",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Refactor substitute word under cursor" }
 )
 
 -- Remap for dealing with word wrap
@@ -43,11 +43,3 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
 vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
-
--- Diagnostic keymaps
-vim.keymap.set("n", "[d", function()
-	vim.diagnostic.jump({ count = -1, float = true })
-end, { desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "]d", function()
-	vim.diagnostic.jump({ count = 1, float = true })
-end, { desc = "Go to next diagnostic message" })
