@@ -23,7 +23,6 @@ return {
 				ensure_installed = {
 					"groovyls",
 					"rust_analyzer",
-					"gopls",
 					"ts_ls",
 					"solargraph",
 					"prismals",
@@ -114,7 +113,6 @@ return {
 			local simple_servers = {
 				"groovyls",
 				"rust_analyzer",
-				"gopls",
 				"ts_ls",
 				"solargraph",
 				"prismals",
