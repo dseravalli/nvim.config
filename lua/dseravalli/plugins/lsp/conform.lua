@@ -4,6 +4,28 @@ return {
 	config = function()
 		local conform = require("conform")
 
+		vim.defer_fn(function()
+			local mr = require("mason-registry")
+
+			local ensure_installed_tools = {
+				"shellcheck",
+				"shfmt",
+				"isort",
+				"prettier",
+				"stylua",
+				"ruff",
+			}
+
+			mr.refresh(function()
+				for _, tool in ipairs(ensure_installed_tools) do
+					local p = mr.get_package(tool)
+					if not p:is_installed() then
+						p:install()
+					end
+				end
+			end)
+		end, 100)
+
 		conform.setup({
 			formatters_by_ft = {
 				python = { "isort", "ruff_format" },

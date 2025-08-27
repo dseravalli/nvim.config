@@ -12,6 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	spec = "dseravalli.lazy",
-	change_detection = { notify = false },
+	{ import = "dseravalli.plugins" },
+	{ import = "dseravalli.plugins.lsp" },
 })

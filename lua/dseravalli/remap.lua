@@ -40,3 +40,18 @@ vim.keymap.set("n", "]l", "<cmd>lnext<CR>zz", { desc = "Next locationlist" })
 vim.keymap.set("n", "[l", "<cmd>lprev<CR>zz", { desc = "Prev locationlist" })
 
 vim.keymap.set("n", "<leader>m", ":MaximizerToggle<CR>", { desc = "Toggle split full-screen" })
+
+-- LSP
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
+vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" })
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
+
+-- Diagnostic keymaps
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous diagnostic message" })
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next diagnostic message" })

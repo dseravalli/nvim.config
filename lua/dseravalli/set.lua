@@ -1,3 +1,18 @@
+vim.lsp.enable({
+	"bash",
+	"docker",
+	"go",
+	"html",
+	"json",
+	"lua",
+	"python",
+	"ruby",
+	"tailwind",
+	"terraform",
+	"typescript",
+	"yaml",
+})
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.o.guicursor = ""
@@ -34,3 +49,26 @@ vim.wo.signcolumn = "yes"
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
+
+-- Custom filetypes
+vim.filetype.add({
+	extension = {
+		keymap = "devicetree",
+		templ = "templ",
+		flux = "flux",
+	},
+	filename = {
+		["Podfile"] = "ruby",
+	},
+	pattern = {
+		["%.env%..*"] = "sh",
+		[".*%.json%.jbuilder"] = "ruby",
+	},
+})
+
+-- Configure diagnostics
+vim.diagnostic.config({
+	float = {
+		source = true,
+	},
+})
