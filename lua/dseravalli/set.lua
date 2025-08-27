@@ -68,5 +68,5 @@ vim.filetype.add({
 
 -- Configure diagnostics
 vim.diagnostic.config({
-  virtual_lines = true,
+  virtual_text = true,
 })
