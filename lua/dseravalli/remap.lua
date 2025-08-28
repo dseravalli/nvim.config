@@ -5,10 +5,10 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("v", "<leader>p", '"_dP', { desc = "Paste without overwrite" })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 vim.keymap.set(
-  "n",
-  "<leader>rs",
-  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  { desc = "Refactor substitute word under cursor" }
+	"n",
+	"<leader>rs",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Refactor substitute word under cursor" }
 )
 
 -- Remap for dealing with word wrap
