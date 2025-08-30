@@ -1,7 +1,7 @@
 local ui_group = vim.api.nvim_create_augroup("dseravalli.ui", { clear = true })
 local lsp_group = vim.api.nvim_create_augroup("dseravalli.lsp", { clear = true })
 
--- 1) Native completion + format-on-save (buffer-local, duplicate-safe)
+-- 1) Native completion, disable LSP formatters
 vim.api.nvim_create_autocmd("LspAttach", {
   group = lsp_group,
   callback = function(args)
@@ -18,19 +18,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.completion.enable(true, client.id, buf, { autotrigger = false })
     end
 
-    -- If the server formats, set up format-on-save for this buffer (one per buffer)
+    -- Disable all LSP formatters to not step on conform
     if client.supports_method and client:supports_method("textDocument/formatting") then
-      -- prevent stacking if multiple clients attach / config reloads
-      vim.api.nvim_clear_autocmds({ group = lsp_group, buffer = buf, event = "BufWritePre" })
-
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = lsp_group,
-        buffer = buf,
-        desc = "LSP format on save",
-        callback = function()
-          vim.lsp.buf.format({ bufnr = buf, id = client.id, async = false, timeout_ms = 1000 })
-        end,
-      })
+      client.server_capabilities.documentFormattingProvider = false
     end
   end,
 })
