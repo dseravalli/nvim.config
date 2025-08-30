@@ -7,9 +7,6 @@ return {
 	config = function()
 		require("refactoring").setup({})
 
-		vim.keymap.set({ "n", "x" }, "<leader>rr", function()
-			require("telescope").extensions.refactoring.refactors()
-		end, { desc = "Refactoring menu" })
 		vim.keymap.set("x", "<leader>re", ":Refactor extract ")
 		vim.keymap.set("x", "<leader>rf", ":Refactor extract_to_file ")
 		vim.keymap.set("x", "<leader>rv", ":Refactor extract_var ")

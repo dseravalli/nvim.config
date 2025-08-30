@@ -4,7 +4,6 @@
 
 1. **Prerequisites**:
    - A [Nerd Font](https://www.nerdfonts.com/) for icons
-   - `make` for telescope-fzf-native
    - Ripgrep (`rg`) for fast searching
 
 2. **Clone the configuration**:
