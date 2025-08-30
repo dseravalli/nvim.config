@@ -1,24 +1,25 @@
 return {
-	"folke/snacks.nvim",
-	priority = 1000,
-	lazy = false,
-	opts = {
-		picker = {},
-		bigfile = {},
-		dashboard = {
-			enabled = true,
-			sections = {
-				{ section = "header" },
-				{ section = "keys", gap = 1, padding = 1 },
-				{ section = "startup" },
-			},
-		},
-		notifier = {},
-		quickfile = {},
-		statuscolumn = {},
-		words = {},
-		indent = {},
-	},
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  opts = {
+    picker = {},
+    bigfile = {},
+    image = {},
+    dashboard = {
+      enabled = true,
+      sections = {
+        { section = "header" },
+        { section = "keys",   gap = 1, padding = 1 },
+        { section = "startup" },
+      },
+    },
+    notifier = {},
+    quickfile = {},
+    statuscolumn = {},
+    words = {},
+    indent = {},
+  },
   -- stylua: ignore start
   keys = {
     { "<leader>c",       function() Snacks.bufdelete() end,                                      desc = "Close buffer" },
@@ -88,5 +89,5 @@ return {
     { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
     { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
   },
-	-- stylua: ignore end
+  -- stylua: ignore end
 }
