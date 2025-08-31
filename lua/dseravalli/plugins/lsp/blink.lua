@@ -1,9 +1,10 @@
 return {
   "saghen/blink.cmp",
-  -- optional: provides snippets for the snippet source
   dependencies = {
     "rafamadriz/friendly-snippets",
     "brenoprata10/nvim-highlight-colors",
+    "zbirenbaum/copilot.lua",
+    "fang2hou/blink-copilot",
   },
 
   -- use a release tag to download pre-built binaries
@@ -38,7 +39,7 @@ return {
 
     -- (Default) Only show the documentation popup when manually triggered
     completion = {
-      documentation = { auto_show = false },
+      documentation = { auto_show = true },
       menu = {
         draw = {
           components = {
@@ -79,7 +80,15 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "snippets", "buffer", "copilot" },
+      providers = {
+        copilot = {
+          name = "copilot",
+          module = "blink-copilot",
+          score_offset = 100,
+          async = true,
+        },
+      },
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

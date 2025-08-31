@@ -6,6 +6,7 @@ return {
     picker = {},
     bigfile = {},
     image = {},
+    scratch = {},
     dashboard = {
       enabled = true,
       sections = {
@@ -88,6 +89,9 @@ return {
     { "gy",              function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
     { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
     { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
+    -- Scratch
+    { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+    { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
   },
   -- stylua: ignore end
 }
