@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { "ruby-lsp" },
+  cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
   root_markers = { "Gemfile", ".git" },
   filetypes = { "ruby" },
   init_options = {
