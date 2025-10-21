@@ -5,15 +5,6 @@ return {
   opts = {
     picker = {},
     bigfile = {},
-    image = {
-      doc = {
-        enabled = true,
-        inline = false,
-        float = true,
-        max_width = 25,
-        max_height = 25,
-      },
-    },
     scratch = {},
     dashboard = {
       enabled = true,
