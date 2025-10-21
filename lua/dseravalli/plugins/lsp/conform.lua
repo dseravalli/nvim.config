@@ -42,6 +42,7 @@ return {
         graphql = { "prettier" },
         lua = { "stylua" },
         ruby = { "rubocop" },
+        sql = { "sqruff" },
       },
       format_on_save = {
         lsp_fallback = true,
