@@ -1,5 +1,5 @@
 ---@type vim.lsp.Config
 return {
-	filetypes = { "yaml" },
-	cmd = { "yaml-language-server", "--stdio" },
+  filetypes = { "yaml" },
+  cmd = { "yaml-language-server", "--stdio" },
 }
