@@ -3,8 +3,7 @@ return {
   dependencies = {
     "rafamadriz/friendly-snippets",
     "brenoprata10/nvim-highlight-colors",
-    "zbirenbaum/copilot.lua",
-    "fang2hou/blink-copilot",
+    "milanglacier/minuet-ai.nvim",
   },
 
   -- use a release tag to download pre-built binaries
@@ -46,6 +45,9 @@ return {
             -- customize the drawing of kind icons
             kind_icon = {
               text = function(ctx)
+                if ctx.item.source_name == "minuet" then
+                  return "󰚩" .. ctx.icon_gap
+                end
                 -- default kind icon
                 local icon = ctx.kind_icon
                 -- if LSP source, check for color derived from documentation
@@ -80,13 +82,16 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "copilot" },
+      default = { "lsp", "path", "snippets", "buffer", "minuet" },
       providers = {
-        copilot = {
-          name = "copilot",
-          module = "blink-copilot",
-          score_offset = 100,
+        minuet = {
+          name = "minuet",
+          module = "minuet.blink",
           async = true,
+          -- Should match minuet.config.request_timeout * 1000,
+          -- since minuet.config.request_timeout is in seconds
+          timeout_ms = 3000,
+          score_offset = 50, -- Gives minuet higher priority among suggestions
         },
       },
     },
