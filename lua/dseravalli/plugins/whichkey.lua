@@ -18,6 +18,8 @@ return {
       { "<leader>d_", hidden = true },
       { "<leader>g", group = "[G]it" },
       { "<leader>g_", hidden = true },
+      { "<leader>f", group = "[F]ind" },
+      { "<leader>f_", hidden = true },
     })
   end,
 }

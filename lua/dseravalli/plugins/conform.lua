@@ -3,6 +3,8 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     formatters_by_ft = {
+      sh = { "shfmt" },
+      bash = { "shfmt" },
       python = { "ruff_organize_imports", "ruff_format" },
       javascript = { "prettier" },
       typescript = { "prettier" },
