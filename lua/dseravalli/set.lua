@@ -2,6 +2,7 @@ vim.lsp.enable({
   "bash",
   "docker",
   "go",
+  "hcl",
   "html",
   "json",
   "lua",
@@ -19,8 +20,8 @@ vim.g.loaded_perl_provider = 0
 vim.o.guicursor = ""
 vim.o.hlsearch = false
 vim.o.incsearch = true
-vim.wo.number = true
-vim.wo.rnu = true
+vim.o.number = true
+vim.o.rnu = true
 vim.o.mouse = "a"
 vim.o.undofile = true
 vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -41,7 +42,7 @@ vim.o.updatetime = 300
 vim.o.clipboard = "unnamedplus"
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = "yes"
+vim.o.signcolumn = "yes"
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
@@ -50,6 +51,7 @@ vim.o.smartcase = true
 -- Custom filetypes
 vim.filetype.add({
   extension = {
+    hbs = "html",
     keymap = "devicetree",
     templ = "templ",
     flux = "flux",

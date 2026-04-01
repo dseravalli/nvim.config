@@ -65,6 +65,11 @@ vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, { desc = "Signature
 -- Add a shortcut for Diffview under the same g menu setup for Lazygit by snacks
 vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<CR>", { desc = "Diffview Open" })
 
+-- Disable native LSP keymaps that conflict with Snacks pickers
+for _, key in ipairs({ "gra", "grr", "gri", "grn", "grt", "grx" }) do
+  vim.keymap.set("n", key, "<Nop>")
+end
+
 -- Float diagnostic
 vim.keymap.set("n", "]d", function()
   vim.diagnostic.jump({ count = 1, float = true })

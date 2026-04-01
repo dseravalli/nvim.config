@@ -32,6 +32,7 @@ return {
       "vue",
       "typst",
       "regex",
+      "markdown",
     })
   end,
 }
