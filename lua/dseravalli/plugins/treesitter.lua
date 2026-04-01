@@ -33,6 +33,8 @@ return {
       "typst",
       "regex",
       "markdown",
+      "markdown_inline",
+      "hcl",
     })
   end,
 }

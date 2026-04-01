@@ -20,9 +20,6 @@ return {
       { "<leader>d_", hidden = true },
       { "<leader>g", group = "[G]it" },
       { "<leader>g_", hidden = true },
-      { "<leader>v", hidden = true },
-      { "<leader>vc", hidden = true },
-      { "<leader>vca", hidden = true },
     })
   end,
 }

@@ -10,7 +10,7 @@ vim.g.mapleader = " "
 -- <leader>f       find (files, buffers, git)       snacks.lua
 -- <leader>g       git (lazygit, blame, log, diff)  snacks.lua, remap.lua
 -- <leader>k       signature help                   remap.lua
--- <leader>m       maximizer                        remap.lua
+-- <leader>m       maximize split (zoom)             remap.lua
 -- <leader>n       notifications                    snacks.lua
 -- <leader>p       paste / possession (sessions)    remap.lua, possession.lua
 -- <leader>r       refactor / rename                remap.lua, refactoring.lua
@@ -55,7 +55,9 @@ vim.keymap.set("n", "[q", "<cmd>cprev<CR>zz", { desc = "Prev quickfix" })
 vim.keymap.set("n", "]l", "<cmd>lnext<CR>zz", { desc = "Next locationlist" })
 vim.keymap.set("n", "[l", "<cmd>lprev<CR>zz", { desc = "Prev locationlist" })
 
-vim.keymap.set("n", "<leader>m", ":MaximizerToggle<CR>", { desc = "Toggle split full-screen" })
+vim.keymap.set("n", "<leader>m", function()
+  Snacks.toggle.zoom():toggle()
+end, { desc = "Toggle split full-screen" })
 
 -- LSP
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })

@@ -9,11 +9,26 @@ return {
     vim.env.PATH = mason_bin .. ":" .. vim.env.PATH
 
     local ensure_installed = {
+      -- LSP servers
+      "bash-language-server",
+      "docker-language-server",
+      "gopls",
+      "lua-language-server",
+      "ruby-lsp",
+      "tailwindcss-language-server",
+      "terraform-ls",
+      "typescript-language-server",
+      "yaml-language-server",
+      -- Formatters
+      "prettier",
+      "rubocop",
+      "sqruff",
+      "stylua",
+      -- Linters
       "shellcheck",
       "shfmt",
-      "prettier",
-      "stylua",
-      "ruff",
+      -- Debuggers
+      "delve",
       "js-debug-adapter",
     }
 

@@ -12,6 +12,7 @@ return {
     statuscolumn = {},
     words = {},
     indent = {},
+    zen = {},
   },
   -- stylua: ignore start
   keys = {
