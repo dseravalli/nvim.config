@@ -1,5 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  lazy = false,
   branch = "main",
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
@@ -8,23 +9,22 @@ return {
     "vrischmann/tree-sitter-templ",
   },
   config = function()
-    require("nvim-treesitter").setup({
-      ensure_installed = {
-        "c",
-        "cpp",
-        "go",
-        "lua",
-        "python",
-        "rust",
-        "ruby",
-        "tsx",
-        "javascript",
-        "typescript",
-        "vimdoc",
-        "vim",
-        "bash",
-        "terraform",
-      },
+    require("nvim-treesitter").setup({})
+    require("nvim-treesitter").install({
+      "c",
+      "cpp",
+      "go",
+      "lua",
+      "python",
+      "rust",
+      "ruby",
+      "tsx",
+      "javascript",
+      "typescript",
+      "vimdoc",
+      "vim",
+      "bash",
+      "terraform",
     })
   end,
 }
