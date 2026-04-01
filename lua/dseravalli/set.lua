@@ -15,6 +15,7 @@ vim.lsp.enable({
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_perl_provider = 0
 vim.o.guicursor = ""
 vim.o.hlsearch = false
 vim.o.incsearch = true

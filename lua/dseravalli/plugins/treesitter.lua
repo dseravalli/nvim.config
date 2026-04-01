@@ -3,7 +3,6 @@ return {
   lazy = false,
   branch = "main",
   build = ":TSUpdate",
-  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "joerdav/templ.vim",
     "vrischmann/tree-sitter-templ",
@@ -11,6 +10,7 @@ return {
   config = function()
     require("nvim-treesitter").setup({})
     require("nvim-treesitter").install({
+      "bash",
       "c",
       "cpp",
       "go",
@@ -23,8 +23,15 @@ return {
       "typescript",
       "vimdoc",
       "vim",
-      "bash",
       "terraform",
+      "css",
+      "html",
+      "latex",
+      "scss",
+      "svelte",
+      "vue",
+      "typst",
+      "regex",
     })
   end,
 }

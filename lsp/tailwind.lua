@@ -1,9 +1,8 @@
 ---@type vim.lsp.Config
 return {
   cmd = { "tailwindcss-language-server", "--stdio" },
-  root_markers = { "tailwind.config.js" },
+  root_markers = { "tailwind.config.js", "tailwind.config.ts", "tailwind.config.mjs", "tailwind.config.cjs" },
   filetypes = {
-    "javascript",
     "htmldjango",
     "css",
     "html",
@@ -13,10 +12,8 @@ return {
     "vue",
     "javascript",
     "javascriptreact",
-    "javascript.jsx",
     "typescript",
     "typescriptreact",
-    "typescript.tsx",
   },
   init_options = { userLanguages = { templ = "html" } },
   settings = {
