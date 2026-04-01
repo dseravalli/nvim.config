@@ -33,15 +33,11 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.wrap = false
 vim.o.updatetime = 300
-vim.o.lazyredraw = true -- Don't redraw while executing macros
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.o.clipboard = "unnamedplus"
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = "yes"

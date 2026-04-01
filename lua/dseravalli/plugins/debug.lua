@@ -40,7 +40,16 @@ return {
       local dapui = require("dapui")
       dapui.setup()
 
-      require("dap-python").setup("uv")
+      local python_path = vim.fn.exepath("uv") ~= "" and "uv"
+        or vim.fn.exepath("python3") ~= "" and "python3"
+        or vim.fn.exepath("python") ~= "" and "python"
+        or nil
+
+      if python_path then
+        require("dap-python").setup(python_path)
+      else
+        vim.notify("dap-python: no Python executable found (tried uv, python3, python)", vim.log.levels.WARN)
+      end
 
       vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
 

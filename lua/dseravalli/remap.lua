@@ -1,5 +1,24 @@
 vim.g.mapleader = " "
 
+-- Leader namespace index
+-- Keymaps are co-located with plugin specs for lazy-loading.
+-- This is a reference of where each namespace is defined.
+--
+-- <leader>c       close buffer                     snacks.lua
+-- <leader>d       debug (DAP)                      debug.lua
+-- <leader>e       file explorer                    snacks.lua
+-- <leader>f       find (files, buffers, git)       snacks.lua
+-- <leader>g       git (lazygit, blame, log, diff)  snacks.lua, remap.lua
+-- <leader>k       signature help                   remap.lua
+-- <leader>m       maximizer                        remap.lua
+-- <leader>n       notifications                    snacks.lua
+-- <leader>p       paste / possession (sessions)    remap.lua, possession.lua
+-- <leader>r       refactor / rename                remap.lua, refactoring.lua
+-- <leader>s       search (grep, LSP, pickers)      snacks.lua
+-- <leader>t       test (neotest) / trouble         neotest.lua, trouble.lua
+-- <leader>u       undo / UI (colorscheme)          undotree.lua, snacks.lua
+-- <leader>x       make file executable             remap.lua
+
 vim.keymap.set("n", "Q", "<Nop>")
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("v", "<leader>p", '"_dP', { desc = "Paste without overwrite" })

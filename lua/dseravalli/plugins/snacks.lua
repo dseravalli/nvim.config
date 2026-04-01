@@ -18,10 +18,8 @@ return {
     { "<leader>c",       function() Snacks.bufdelete() end,                                      desc = "Close buffer" },
     { "<leader>h",       function() Snacks.notifier.hide() end,                                  desc = "Dismiss All Notifications", },
     { "<leader>gg",      function() Snacks.lazygit() end,                                        desc = "Lazygit", },
-    { "<leader>gb",      function() Snacks.git.blame_line() end,                                 desc = "GitBlame Line", },
+    { "<leader>gb",      function() Snacks.git.blame_line() end,                                 desc = "Git Blame Line", },
     { "<leader>gB",      function() Snacks.gitbrowse() end,                                      desc = "Git Browse", },
-    { "<leader>gf",      function() Snacks.lazygit.log_file() end,                               desc = "Lazygit Current File History", },
-    { "<leader>gl",      function() Snacks.lazygit.log() end,                                    desc = "Lazygit Log (cwd)", },
     { "]]",              function() Snacks.words.jump(vim.v.count1) end,                         desc = "Next Reference",               mode = { "n", "t" }, },
     { "[[",              function() Snacks.words.jump(-vim.v.count1) end,                        desc = "Prev Reference",               mode = { "n", "t" }, },
     -- Top Pickers & Explorer
@@ -39,12 +37,12 @@ return {
     { "<leader>fp",      function() Snacks.picker.projects() end,                                desc = "Projects" },
     { "<leader>fr",      function() Snacks.picker.recent() end,                                  desc = "Recent" },
     -- git
-    { "<leader>gb",      function() Snacks.picker.git_branches() end,                            desc = "Git Branches" },
+    { "<leader>gR",      function() Snacks.picker.git_branches() end,                            desc = "Git Branches" },
     { "<leader>gl",      function() Snacks.picker.git_log() end,                                 desc = "Git Log" },
     { "<leader>gL",      function() Snacks.picker.git_log_line() end,                            desc = "Git Log Line" },
     { "<leader>gs",      function() Snacks.picker.git_status() end,                              desc = "Git Status" },
     { "<leader>gS",      function() Snacks.picker.git_stash() end,                               desc = "Git Stash" },
-    { "<leader>gd",      function() Snacks.picker.git_diff() end,                                desc = "Git Diff (Hunks)" },
+    { "<leader>gh",      function() Snacks.picker.git_diff() end,                                desc = "Git Diff Hunks" },
     { "<leader>gf",      function() Snacks.picker.git_log_file() end,                            desc = "Git Log File" },
     -- Grep
     { "<leader>sb",      function() Snacks.picker.lines() end,                                   desc = "Buffer Lines" },
