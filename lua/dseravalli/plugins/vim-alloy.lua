@@ -1,1 +1,4 @@
-return { "grafana/vim-alloy" }
+return {
+  "grafana/vim-alloy",
+  ft = "alloy",
+}

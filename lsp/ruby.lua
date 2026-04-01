@@ -7,7 +7,7 @@ return {
   filetypes = { "ruby" },
 
   init_options = {
-    linters = { "standard" },
+    linters = { "rubocop" },
     addonSettings = {
       ["Ruby LSP Rails"] = {
         enablePendingMigrationsPrompt = false,
