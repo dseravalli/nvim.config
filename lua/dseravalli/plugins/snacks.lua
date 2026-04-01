@@ -6,7 +6,25 @@ return {
     picker = {},
     bigfile = {},
     scratch = {},
-    dashboard = { enabled = false },
+    dashboard = {
+      preset = {
+        keys = {
+          {
+            icon = " ",
+            key = "c",
+            desc = "Config",
+            action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+          },
+          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+        },
+      },
+      sections = {
+        { section = "header" },
+        { section = "keys", padding = 1, gap = 1 },
+        { section = "startup" },
+      },
+    },
     notifier = {},
     quickfile = {},
     statuscolumn = {},
