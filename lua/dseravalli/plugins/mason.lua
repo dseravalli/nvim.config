@@ -10,9 +10,12 @@ return {
 
     local ensure_installed = {
       -- LSP servers
+      "basedpyright",
       "bash-language-server",
       "docker-language-server",
       "gopls",
+      "html-lsp",
+      "json-lsp",
       "lua-language-server",
       "ruby-lsp",
       "tailwindcss-language-server",
@@ -22,6 +25,7 @@ return {
       -- Formatters
       "prettier",
       "rubocop",
+      "ruff",
       "sqruff",
       "stylua",
       -- Linters

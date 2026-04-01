@@ -16,7 +16,7 @@ vim.g.mapleader = " "
 -- <leader>r       refactor / rename                remap.lua, refactoring.lua
 -- <leader>s       search (grep, LSP, pickers)      snacks.lua
 -- <leader>t       test (neotest) / trouble         neotest.lua, trouble.lua
--- <leader>u       undo / UI (colorscheme)          undotree.lua, snacks.lua
+-- <leader>u       undo tree                        undotree.lua
 -- <leader>x       make file executable             remap.lua
 
 vim.keymap.set("n", "Q", "<Nop>")
@@ -61,7 +61,6 @@ end, { desc = "Toggle split full-screen" })
 
 -- LSP
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
 vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
 
 -- Add a shortcut for Diffview under the same g menu setup for Lazygit by snacks

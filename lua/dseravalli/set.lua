@@ -1,12 +1,3 @@
-local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
-local lsp_configs = {}
-for name, type in vim.fs.dir(lsp_dir) do
-  if type == "file" and name:match("%.lua$") then
-    table.insert(lsp_configs, (name:gsub("%.lua$", "")))
-  end
-end
-vim.lsp.enable(lsp_configs)
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_perl_provider = 0
@@ -19,7 +10,6 @@ vim.o.mouse = "a"
 vim.o.undofile = true
 vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.o.swapfile = false
-vim.o.termguicolors = true
 vim.o.colorcolumn = "80"
 vim.o.scrolloff = 8
 vim.o.tabstop = 2
@@ -56,9 +46,4 @@ vim.filetype.add({
     ["%.env%..*"] = "sh",
     [".*%.json%.jbuilder"] = "ruby",
   },
-})
-
--- Configure diagnostics
-vim.diagnostic.config({
-  virtual_text = true,
 })

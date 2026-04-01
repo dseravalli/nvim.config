@@ -20,7 +20,7 @@ return {
       sql = { "sqruff" },
     },
     format_on_save = {
-      lsp_format = "fallback",
+      lsp_format = "never",
       async = false,
       timeout_ms = 3000,
     },
