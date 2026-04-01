@@ -1,18 +1,11 @@
-vim.lsp.enable({
-  "bash",
-  "docker",
-  "go",
-  "hcl",
-  "html",
-  "json",
-  "lua",
-  "python",
-  "ruby",
-  "tailwind",
-  "terraform",
-  "typescript",
-  "yaml",
-})
+local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
+local lsp_configs = {}
+for name, type in vim.fs.dir(lsp_dir) do
+  if type == "file" and name:match("%.lua$") then
+    table.insert(lsp_configs, (name:gsub("%.lua$", "")))
+  end
+end
+vim.lsp.enable(lsp_configs)
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

@@ -6,7 +6,7 @@ return {
   telemetry = { enabled = false },
   settings = {
     Lua = {
-      diagnostics = { globals = { "vim", "Snacks" } },
+      diagnostics = { globals = { "vim" } },
       runtime = {
         version = "LuaJIT",
       },
