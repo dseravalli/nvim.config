@@ -36,16 +36,14 @@ return {
       "js-debug-adapter",
     }
 
-    vim.defer_fn(function()
-      local mr = require("mason-registry")
-      mr.refresh(function()
-        for _, tool in ipairs(ensure_installed) do
-          local p = mr.get_package(tool)
-          if not p:is_installed() then
-            p:install()
-          end
+    local mr = require("mason-registry")
+    mr.refresh(function()
+      for _, tool in ipairs(ensure_installed) do
+        local ok, p = pcall(mr.get_package, tool)
+        if ok and not p:is_installed() then
+          p:install()
         end
-      end)
-    end, 100)
+      end
+    end)
   end,
 }
