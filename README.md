@@ -16,6 +16,10 @@
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - tmux
 
+### API Keys
+
+- `GEMINI_API_KEY` -- AI completions via [minuet-ai](https://github.com/milanglacier/minuet-ai.nvim)
+
 ### Language Runtimes (as needed)
 
 Mason handles LSP servers, formatters, and linters -- but the underlying runtimes must be present.
