@@ -9,6 +9,8 @@ return {
     dashboard = {
       preset = {
         keys = {
+          { icon = " ", key = "n", desc = "New File", action = ":ene" },
+
           {
             icon = " ",
             key = "c",
